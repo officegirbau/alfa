@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulario de reclutamiento</title>
+  <script>
+    function mostrarPreguntas() {
+      var nombre = document.getElementById("nombre").value;
+      
+      if (nombre.trim().length < 1) {
+        alert("Por favor, ingrese su nombre y apellidos.");
+        return;
+      }
+      
+      document.getElementById("preguntaDedos").style.display = "block";
+    }
+    
+    function mostrarPreguntaCabezas() {
+      var dedos = document.getElementById("dedos").value;
+      
+      if (dedos.trim().length < 1) {
+        alert("Por favor, seleccione el número de dedos.");
+        return;
+      }
+      
+      document.getElementById("preguntaCabezas").style.display = "block";
+    }
+    
+    // Puedes añadir funciones similares para las preguntas adicionales
+    
+    function mostrarPreguntaPies() {
+      var cabezas = document.getElementById("cabezas").value;
+      
+      if (cabezas.trim().length < 1) {
+        alert("Por favor, seleccione el número de cabezas.");
+        return;
+      }
+      
+      document.getElementById("preguntaPies").style.display = "block";
+    }
+    
+    function mostrarPreguntaBrazos() {
+      var pies = document.getElementById("pies").value;
+      
+      if (pies.trim().length < 1) {
+        alert("Por favor, seleccione el número de pies.");
+        return;
+      }
+      
+      document.getElementById("preguntaBrazos").style.display = "block";
+    }
+    
+    function mostrarPreguntaOjos() {
+      var brazos = document.getElementById("brazos").value;
+      
+      if (brazos.trim().length < 1) {
+        alert("Por favor, seleccione el número de brazos.");
+        return;
+      }
+      
+      document.getElementById("preguntaOjos").style.display = "block";
+    }
+  </script>
+</head>
+<body>
+  <h1>Formulario de reclutamiento</h1>
+  
+  <form>
+    <label for="nombre">Nombre y apellidos:</label>
+    <input type="text" id="nombre" name="nombre" required><br><br>
+    
+    <button type="button" onclick="mostrarPreguntas()">Comenzar</button>
+  </form>
+  
+  <div id="preguntaDedos" style="display: none;">
+    <h3>¿Cuántos dedos tienes?</h3>
+    <select id="dedos" name="dedos">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select><br><br>
+    
+    <button type="button" onclick="mostrarPreguntaCabezas()">Siguiente</button>
+  </div>
+  
+  <div id="preguntaCabezas" style="display: none;">
+    <h3>¿Cuántas cabezas tienes?</h3>
+    <select id="cabezas" name="cabezas">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <!-- Resto de opciones -->
+    </select><br><br>
+    
+    <button type="button" onclick="mostrarPreguntaPies()">
+        Siguiente</button>
+    </div>
+    
+    <div id="preguntaPies" style="display: none;">
+      <h3>¿Cuántos pies tienes?</h3>
+      <select id="pies" name="pies">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <!-- Resto de opciones -->
+      </select><br><br>
+      
+      <button type="button" onclick="mostrarPreguntaBrazos()">Siguiente</button>
+    </div>
+    
+    <div id="preguntaBrazos" style="display: none;">
+      <h3>¿Cuántos brazos tienes?</h3>
+      <select id="brazos" name="brazos">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <!-- Resto de opciones -->
+      </select><br><br>
+      
+      <button type="button" onclick="mostrarPreguntaOjos()">Siguiente</button>
+    </div>
+    
+    <div id="preguntaOjos" style="display: none;">
+      <h3>¿Cuántos ojos tienes?</h3>
+      <select id="ojos" name="ojos">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <!-- Resto de opciones -->
+      </select><br><br>
+      
+      <button type="button" onclick="generarResultado()">Generar Resultado</button>
+    </div>
+    
+    <!-- Aquí puedes añadir el código HTML para el resultado -->
+    
+  </body>
+  </html>
+  

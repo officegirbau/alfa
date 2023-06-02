@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejercicio 1 - El reclutador que tot ho dobla | OfficeGirbau</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.0/brython.min.js"></script>
+</head>
+
+<body onload="brython()">
+    <div id="content">
+        <header>
+            <h1>Office<span>G</span>irbau & <img src="../images/woow.png" alt="Academia Woow, Roda de Barà"
+                    class="logo"></h1>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inici</a></li>
+                    <li><a href="#descarga">Descàrrega de programes</a></li>
+                    <li><a href="#ejercicios">Exercicis de programació</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section>
+                <h2>El reclutador que tot ho dobla</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0"
+                    allowfullscreen></iframe>
+                <p>Aquí va la explicació de l'exercici.</p>
+                <pre>
+                    <code>
+                        import tkinter as tk
+                        from tkinter import ttk
+                        from datetime import datetime
+                        
+                        
+                        
+                        def calculate_age():
+                            day = int(day_var.get())
+                            month = int(month_var.get())
+                            year = int(year_var.get())
+                            birth_date = datetime(year, month, day)
+                            now = datetime.now()
+                            
+                            try:
+                                birthday = birth_date.replace(year=now.year)
+                            except ValueError:  # raised when birth date is February 29 and the current year is not a leap year
+                                birthday = birth_date.replace(year=now.year, day=birth_date.day-1)
+                            
+                            if birthday > now:
+                                years = now.year - birth_date.year - 1
+                            else:
+                                years = now.year - birth_date.year
+                            
+                            # calculate months
+                            if now.month > birth_date.month:
+                                months = now.month - birth_date.month
+                            elif now.month < birth_date.month:
+                                months = 12 - (birth_date.month - now.month)
+                                years -= 1
+                            else:
+                                months = 0
+                            
+                            # calculate days
+                            if now.day >= birth_date.day:
+                                days = now.day - birth_date.day
+                            else:
+                                days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+                                if now.year % 4 == 0 and (now.year % 100 != 0 or now.year % 400 == 0):
+                                    days_in_month[1] = 29
+                                last_month = now.month - 1 if now.month > 1 else 12
+                                days = days_in_month[last_month-1] - (birth_date.day - now.day)
+                                months -= 1
+                            
+                            if months < 0:
+                                months +=12
+                                years -=1
+                            
+                            result_label.config(text=f"Tienes {years} años, {months} meses y {days} días de edad.")
+                        
+                        
+                        root = tk.Tk()
+                        root.title("Calculadora de edad")
+                        
+                        day_label = ttk.Label(root, text="Día:")
+                        day_label.grid(row=0, column=0)
+                        day_var = tk.StringVar()
+                        day_entry = ttk.Combobox(root, textvariable=day_var, values=list(range(1, 32)))
+                        day_entry.grid(row=0, column=1)
+                        
+                        month_label = ttk.Label(root, text="Mes:")
+                        month_label.grid(row=1, column=0)
+                        month_var = tk.StringVar()
+                        month_entry = ttk.Combobox(root, textvariable=month_var, values=list(range(1, 13)))
+                        month_entry.grid(row=1, column=1)
+                        
+                        year_label = ttk.Label(root, text="Año:")
+                        year_label.grid(row=2, column=0)
+                        year_var = tk.StringVar()
+                        year_entry = ttk.Combobox(root, textvariable=year_var, values=list(range(1923, 2023)))
+                        year_entry.grid(row=2, column=1)
+                        
+                        calculate_button = ttk.Button(root, text="Calcular edad", command=calculate_age)
+                        calculate_button.grid(row=3, column=0, columnspan=2)
+                        
+                        result_label = ttk.Label(root)
+                        result_label.grid(row=4, column=0, columnspan=2)
+                        
+                        root.mainloop()
+                        
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <h2>Caixa de prova de codi Python</h2>
+                <textarea id="python-code"></textarea>
+                <button onclick="executePythonCode()">Executar</button>
+                <div id="output"></div>
+                <script type="text/python">
+                    // Código Python
+                    def runPythonCode():
+                        code = doc["python-code"].value
+                        try:
+                            exec(code)
+                        except Exception as e:
+                            output = doc["output"]
+                            output.innerHTML = "<span style='color: red;'>Error: " + str(e) + "</span>"
+                </script>
+                <script>
+                    function executePythonCode() {
+                        brython(1); // Reiniciar el entorno Brython
+                        runPythonCode();
+                    }
+                </script>
+            </section>
+    </div>
+</body>
+
+</html>
