@@ -16,7 +16,7 @@ header h1 {
 }
 
 header h1 span {
-    color: orange;
+    color: #ff4000;
 }
 
 pre {
@@ -52,7 +52,7 @@ section {
 }
 
 section h2 {
-    background-color: orange;
+    background-color: #ff4000;
     color: #fff;
     padding: 10px;
 }
